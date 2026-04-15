@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cine Aurora - Emitir tickets</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <h1>Cine Aurora</h1>
+    <h3>Sistema para sacar entradas</h3>
+
+    <div class="boton-cargar">
+      <button id="cargar">Cargar cartelera</button>
+    </div>
+
+    <section id="contenedor-entradas">
+      <div>
+        <label for="entrada-nombre"></label>
+        <input
+          type="text"
+          id="entrada-nombre"
+          name="entrada-nombre"
+          placeholder="Nombre completo"
+        />
+      </div>
+
+      <div>
+        <select name="entrada-peliculas" id="entrada-peliculas">
+          <option value="0">Presione: 'cargar datos'</option>
+        </select>
+      </div>
+
+      <div>
+        <button id="entrada-add">Emitir Ticket</button>
+      </div>
+
+      <div id="mensaje">
+        <p id="mensaje-texto"></p>
+      </div>
+    </section>
+
+    <section id="entradas-emitidas">
+      <h3>Entradas emitidas:</h3>
+      <h5>Total entradas: <span id="entradas-count">0</span></h5>
+      <ol id="entradas-lista"></ol>
+    </section>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
