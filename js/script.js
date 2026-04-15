@@ -40,7 +40,17 @@ function selectFilm() {
 5- aumentar la variable del núm de la película
 6- agregar al html/dom
 */
-function addFilm() {}
+function addFilm() {
+  resetTextos();
+  let numPeliucla = 0;
+  catalogo.forEach((pelicula) => {
+    const option = new Option(
+      catalogo[numPeliucla],
+      (numPeliucla += 1).toString(),
+    );
+    entradaPeliculas.appendChild(option);
+  });
+}
 
 /*
 Pasos:
@@ -51,6 +61,12 @@ Pasos:
 function addTicketCheck(espectador, indicePelicula) {
   const ticketNombre = entradaNombre.value;
   const indiceSeleccionado = entradaPeliculas.selectedIndex;
+
+  if (ticketNombre || indiceSeleccionado) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /*
@@ -66,6 +82,22 @@ function addTicket() {
   const ticketNombre = entradaNombre.value;
   const indiceSeleccionado = entradaPeliculas.selectedIndex;
   const ticketPelicula = entradaPeliculas.options[indiceSeleccionado].text;
+
+  if (!addTicketCheck(ticketNombre, indiceSeleccionado)) {
+    alert("¡Faltan datos! Chequeá el nombre y la película.");
+    return;
+  }
+
+  const nuevoTicket = document.createElement("li");
+  nuevoTicket.innerHTML = `<p> Nombre: ${ticketNombre} - Película: ${ticketPelicula} </p>`;
+
+  entradasLista.appendChild(nuevoTicket);
+  addTicketToArray(`${ticketNombre}, ${ticketPelicula}`);
+
+  let cantidadActualTickets = parseInt(entradasCount.textContent);
+  entradasCount.textContent = cantidadActualTickets + 1;
+
+  console.log(cantidadActualTickets);
 }
 
 function addTicketToArray(nombre, pelicula) {
